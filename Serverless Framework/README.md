@@ -33,7 +33,7 @@ This project demonstrates a serverless application that generates random Doge me
 - Added support for different text styles and formats.
 - Adjusted color palette for meme text.
 
-## Project Team
+## Project Team - Synergy
 - Soumya Bharathi
 - Rutuja Patil
 - Shubham Kothiya
