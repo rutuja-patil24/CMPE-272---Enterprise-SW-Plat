@@ -1,0 +1,30 @@
+service: iopipe-workshop-doge-1
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs18.x
+  memorySize: 128
+  timeout: 30
+  apiGateway:
+    binaryMediaTypes:
+      - 'image/jpeg'
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:PutObject"
+        - "s3:GetObject"
+        - "s3:ListBucket"
+      Resource:
+        - "arn:aws:s3:::iopipe-workshop-doge-1"
+        - "arn:aws:s3:::iopipe-workshop-doge-1/*"
+
+functions:
+  create:
+    handler: doge.create
+    memorySize: 256  # Optional increase if needed for image processing
+    timeout: 60  # Optional increase in case of longer image processing
+    events:
+      - http:
+          path: doge/create
+          method: get
